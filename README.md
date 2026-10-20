@@ -1,7 +1,7 @@
 ## Hi, I'm Hiền 👋
 Welcome to my GitHub profile!
 
-<img src="https://your-project.vercel.app/api/pet" />
+<img src="https://github-readme-widget.vercel.app/api/pet" />
 
 <!--
 **Hn23911/Hn23911** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
@@ -18,4 +18,4 @@ Here are some ideas to get you started:
 - ⚡ Fun fact: ...
 -->
 ## Thanks for visiting!
-<img src="https://your-project.vercel.app/api/pet" />
+<img src="https://github-readme-widget.vercel.app/api/pet" />
