@@ -1,6 +1,5 @@
 import { getGitHubState } from "@/lib/github";
 import { getPetState } from "@/lib/pet";
-// import { NextResponse } from "next/server";
 import { ASSETS } from "@/lib/assets";
 
 export async function GET() {
