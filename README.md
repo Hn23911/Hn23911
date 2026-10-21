@@ -20,5 +20,7 @@ Welcome to my GitHub profile!
 
 ## Thanks for visiting!
 <div align="center">
-[!Portfolio](https:img.shields.io/badge/PORTFOLIO-ffb6c1?style=for-the-badge&logoColor=white)](https://portfolio-pz1sy4hi4-nguyen-thu-hien.vercel.app/)
+
+[![Portfolio](https://img.shields.io/badge/PORTFOLIO-ffb6c1?style=for-the-badge&logoColor=white)](https://portfolio-pz1sy4hi4-nguyen-thu-hien.vercel.app/)
+
 </div>
