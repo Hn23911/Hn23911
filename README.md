@@ -2,9 +2,13 @@
 Welcome to my GitHub profile!
 
 ／|、
+
 (˚ˎ 。7
+
 |、˜〵
+
 じしˍ,)ノ
+
 ---
 
 # Commit Streak
