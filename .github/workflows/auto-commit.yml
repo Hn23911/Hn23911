@@ -1,4 +1,3 @@
-
 name: Auto Daily Commit
 
 on:
@@ -20,8 +19,8 @@ jobs:
 
       - name: Commit and Push changes
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action Bot"
+          git config --local user.email "nguyenhien.1192003@gmail.com"
+          git config --local user.name "Hn23911"
           git add auto_commit_log.txt
           git commit -m "Chore: daily auto update streak 🚀" || exit 0
           git push
