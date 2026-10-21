@@ -1,4 +1,4 @@
-## Hi, I'm Hiền 👋
+# Hi, I'm Hien 👋
 Welcome to my GitHub profile!
 
 ／|、  
@@ -8,7 +8,7 @@ Welcome to my GitHub profile!
 
 ---
 
-# Commit Streak
+# 🐱 Commit Streak
 <img src="https://github-readme-widget.vercel.app/api/pet"/>
 
 # Skill 
@@ -21,13 +21,13 @@ Welcome to my GitHub profile!
 [![Redux](https://img.shields.io/badge/Redux-764ABC?style=for-the-badge&logo=redux&logoColor=white)]()
 # 🎨 UI & Styling
 [![TailwindCSS](https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwindcss&logoColor=white)]()
-# Tools
+# 🛠️ Tools
 [![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)]()
 [![VS Code](https://img.shields.io/badge/VS%20Code-007ACC?style=for-the-badge&logo=visualstudiocode&logoColor=white)]()
-# 🎨 Design & UX 🎨
+# 🎨 Design & UX 
 [![Figma](https://img.shields.io/badge/Figma-F24E1E?style=for-the-badge&logo=figma&logoColor=white)]()
 
-## Thanks for visiting!
+# ✨ Thanks for visiting!
 <div align="left">
 
 [![Portfolio](https://img.shields.io/badge/PORTFOLIO-ffb6c1?style=for-the-badge&logoColor=white)](https://portfolio-pz1sy4hi4-nguyen-thu-hien.vercel.app/)
