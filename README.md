@@ -19,8 +19,9 @@ Welcome to my GitHub profile!
 ![React](https://img.shields.io/badge/-React-61DAFB?style=flat&logo=react&logoColor=black)
 
 ## Thanks for visiting!
-<div align="center">
+<div align="left">
 
 [![Portfolio](https://img.shields.io/badge/PORTFOLIO-ffb6c1?style=for-the-badge&logoColor=white)](https://portfolio-pz1sy4hi4-nguyen-thu-hien.vercel.app/)
 [![LinkedIn](https://img.shields.io/badge/LINKEDIN-ffb6c1?style=for-the-badge&logoColor=white)](https://linkedin.com/in/nthhien)
+
 </div>
