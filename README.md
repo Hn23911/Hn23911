@@ -1,13 +1,10 @@
 ## Hi, I'm Hiền 👋
 Welcome to my GitHub profile!
 
-／|、
-
-(˚ˎ 。7
-
-|、˜〵
-
-じしˍ,)ノ
+／|、  
+(˚ˎ 。7  
+|、˜〵  
+じしˍ,)ノ  
 
 ---
 
