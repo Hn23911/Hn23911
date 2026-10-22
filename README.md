@@ -10,7 +10,7 @@ Welcome to my GitHub profile!
 
 # 🐱 Commit Streak
 <p align="left">
-  <img src="https://github-readme-widget-two.vercel.app/api/pet?username=Hn23911&v=120" width="330" height=""330 alt="Pet Widget"/>
+  <img src="https://hn23911-widget-e259s14z9-nguyen-thu-hien.vercel.app/api/pet?username=Hn23911" width="330" height="330" alt="Pet Widget"/>
 </p>
 
 # Skill & Languages
