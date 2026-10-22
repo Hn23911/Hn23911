@@ -1,9 +1,21 @@
+import { NextRequest } from "next/server";
 import { getGitHubState } from "@/lib/github";
 import { getPetState } from "@/lib/pet";
 import { ASSETS } from "@/lib/assets";
 
-export async function GET() {
-    const stats = { currentStreak: 10, username: "Hn23911", totalCommits: 123, longestStreak: 15};
+export async function GET(request: NextRequest) {
+    const {searchParams} = new URL(request.url);
+    const username = searchParams.get("username") || searchParams.get("user") || "Hn23911";
+    let stats = {currentStreak: 0, username: username, totalCommits: 0, longestStreak: 0};
+    try {
+        const fetchedStats = await getGitHubState(username);
+        if (fetchedStats) {
+            stats = fetchedStats;
+        }
+    } catch (error) {
+        console.error("Error fetching GitHub stats:", error);
+    }
+
     const pet = getPetState(stats.currentStreak);
 
     const svg = `
@@ -12,7 +24,7 @@ export async function GET() {
             height="330"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <dref>
+            <drefs>
                 <linearGradient 
                     id="bgGradient"
                     x1="0"
@@ -20,16 +32,15 @@ export async function GET() {
                     x2="1" 
                     y2="1"
                 >
-                    <stop offset="0%"
-                    stop-color="#1e3c72"
-                    <stop offset="100%"
-                    stop-color="#2a5298"
+                    <stop offset="0%" stop-color="#1e3c72"/>
+                    <stop offset="100%" stop-color="#2a5298"/>
                 </linearGradient>
-            </dref>
+            </drefs>
             <rect 
                 width="100%"
                 height="100%"
-                fill="url(#bgGradient)" />
+                fill="url(#bgGradient)" 
+            />
 
             <image
                 href="${pet.asset}"
@@ -53,7 +64,7 @@ export async function GET() {
                 text-anchor="middle"
                 fill="black"
                 font-size="20"
-                font-wight="bold"
+                font-weight="bold"
                 font-family="Arial, sans-serif"
             >
                 ${stats.currentStreak > 10
@@ -93,7 +104,7 @@ export async function GET() {
                 y="200"
                 fill="black"
                 font-size="14">
-                    Total Commits: $stats.totalCommits}
+                    Total Commits: {$stats.totalCommits}
             </text>
 
             <text 
@@ -109,6 +120,7 @@ export async function GET() {
     return new Response(svg, {
         headers: {
             "Content-Type": "image/svg+xml",
+            "Cache-Control": "max-age=0, s-maxage=3600, stale-while-revalidate",
         },
     });
 }
