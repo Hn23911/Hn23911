@@ -8,9 +8,10 @@ Welcome to my GitHub profile!
 
 ---
 
-# 🐱 Commit Streak
 ### 🐱 Commit Streak
-![Pet Widget](https://hn23911-widget-e259s14z9-nguyen-thu-hien.vercel.app/api/pet?username=Hn23911)
+<p align="left">
+  <img src="https://hn23911-widget-e259s14z9-nguyen-thu-hien.vercel.app/api/pet?username=Hn23911" alt="Pet Widget" />
+</p>
 
 # Skill & Languages
 
