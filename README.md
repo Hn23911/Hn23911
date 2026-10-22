@@ -12,7 +12,7 @@ Welcome to my GitHub profile!
 <p align="left">
   <img src="https://github-readme-widget-two.vercel.app/api/pet?username=Hn23911&v=13" alt="Pet Widget"/>
 </p>
-----
+---------------------------------
 
 # Skill & Languages
 
