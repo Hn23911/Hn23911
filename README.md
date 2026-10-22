@@ -9,7 +9,7 @@ Welcome to my GitHub profile!
 ---
 
 # 🐱 Commit Streak
-<img src="https://github-readme-widget.vercel.app/api/pet"/>
+<img src="https://github-readme-widget.vercel.app/api/pet?v=1" alt="Pet Widget"/>
 
 # Skill 
 # Languages
