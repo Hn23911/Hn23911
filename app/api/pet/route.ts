@@ -8,9 +8,14 @@ export async function GET(request: NextRequest) {
     const username = searchParams.get("username") || searchParams.get("user") || "Hn23911";
     let stats = {currentStreak: 0, username: username, totalCommits: 0, longestStreak: 0};
     try {
-        const fetchedStats = await getGitHubState(username);
+        const fetchedStats: any = await getGitHubState(username);
         if (fetchedStats) {
-            stats = fetchedStats;
+            stats = {
+                currentStreak: fetchedStats.currentStreak ?? 0,
+                username: fetchedStats.username || username,
+                totalCommits: fetchedStats.totalCommits ?? 0,
+                longestStreak: fetchedStats.longestStreak ?? 0,
+            };
         }
     } catch (error) {
         console.error("Error fetching GitHub stats:", error);
