@@ -8,12 +8,6 @@ Welcome to my GitHub profile!
 
 ---
 
-# 🐱 Commit Streak
-<p align="left">
-  <img src="https://github-readme-widget-two.vercel.app/api/pet?username=Hn23911&v=100" width="330" height=""330 alt="Pet Widget"/>
-</p>
-
-
 # Skill & Languages
 
 **Languages**
