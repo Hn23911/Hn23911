@@ -9,8 +9,9 @@ Welcome to my GitHub profile!
 ---
 
 # 🐱 Commit Streak
-![GitHub Streak](https://github-readme-streak-stats.herokuapp.com/?user=Hn23911&theme=pink&v=2)
-
+<p align="center">
+  <img src="https://github-readme-widget.vercel.app/api/pet?user=Hn23911&v=3" alt="Pet Widget"/>
+</p>
 # Skill 
 # Languages
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&loloColor=white)]()
