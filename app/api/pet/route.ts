@@ -29,7 +29,7 @@ export async function GET(request: NextRequest) {
             height="330"
             xmlns="http://www.w3.org/2000/svg"
         >
-            <drefs>
+            <defs>
                 <linearGradient 
                     id="bgGradient"
                     x1="0"
@@ -40,7 +40,7 @@ export async function GET(request: NextRequest) {
                     <stop offset="0%" stop-color="#1e3c72"/>
                     <stop offset="100%" stop-color="#2a5298"/>
                 </linearGradient>
-            </drefs>
+            </defs>
             <rect 
                 width="100%"
                 height="100%"
