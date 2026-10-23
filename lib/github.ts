@@ -1,4 +1,14 @@
+type ContributionDay = {
+    contributionCount: number;
+    date: string;
+};
+
 export async function getGitHubState(username: string) {
+    const token = process.env.GITHUB_TOKEN;
+
+    if (!token) {
+        throw new Error("Missing GITHUB_TOKEN environment variable");
+    }
     const query = ` 
         query($login: String!) {
             user(login: $login) {
@@ -21,7 +31,7 @@ export async function getGitHubState(username: string) {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "Authorization": `Bearer ${process.env.GITHUB_TOKEN}`,
+            Authorization: `Bearer ${token}`,
         },
         body: JSON.stringify({
             query,
@@ -29,40 +39,53 @@ export async function getGitHubState(username: string) {
                 login: username,
             },
         }),
+        cache: "no-store",
     });
+
+    if (!res.ok) {
+        throw new Error(`GitHub API HTTP error: ${res.status}`);
+    }
 
     const json = await res.json();
 
+    if (json.error?.length) {
+        throw new Error(
+            `GitHub GraphQL error: ${JSON.stringify(json.errors)}`
+        );
+    }
+
     const user = json.data?.user;
+
     if (!user) {
-        return { currentStreak: 0, totalCommits: 0, longestStreak: 0, username};
+        throw new Error(`GitHub user not found: ${username}`);
     }
 
     const collection = user.contributionsCollection;
-    const totalCommits = collection.totalCommitContribution || 0;
+    const totalCommits = 
+        collection.totalCommitContribution ?? 0;
 
-    const calendar = collection.contributionsCalendar;
-    const days = calendar.weeks.flatMap(
-        (week: any) => week.contributionDays
-    );
-
-    const currentStreak = calculateCurrentStreak(days);
-    const longestStreak = calculateLongestStreak(days);
+    const days = ContributionDay[] = 
+        collection.contributionCalendar.weeks.flatMap(
+            (week: {contributionDays: ContributionDay[] }) =>
+                week.contributionDays
+        );
 
     return {
         username,
-        currentStreak,
+        currentStreak: calculateCurrentStreak(days),
         totalCommits,
-        longestStreak,
+        longestStreak: calculateCurrentStreak(days),
     };
+}
+    function calculateCurrentStreak(days: ContributionDay[]) {
 
-    function calculateCurrentStreak(days: any[]) {
         let streak = 0;
 
         const reversed = [...days].reverse();
 
         let startIndex = 0;
 
+        // Hom nay khong co contribution thi kiem tra tu hom qua
         if (
             reversed.length > 0 &&
             reversed[0].contributionCount === 0
@@ -79,17 +102,19 @@ export async function getGitHubState(username: string) {
        }
         return streak;
     }
-}
-    function calculateLongestStreak(days: any[]) {
+
+    function calculateLongestStreak(days: ContributionDay[]) {
         let maxStreak = 0;
         let current = 0;
+
         for (const day of days) {
             if (day.contributionCount > 0) {
                 current++;
-                if(current > maxStreak) maxStreak = current;
+                maxStreak = Math.max(maxStreak, current);
             } else {
                 current = 0;
             }
         }
+
         return maxStreak;
-    }
+}
