@@ -48,7 +48,7 @@ export async function getGitHubState(username: string) {
 
     const json = await res.json();
 
-    if (json.error?.length) {
+    if (json.errors?.length) {
         throw new Error(
             `GitHub GraphQL error: ${JSON.stringify(json.errors)}`
         );
@@ -62,7 +62,7 @@ export async function getGitHubState(username: string) {
 
     const collection = user.contributionsCollection;
     const totalCommits = 
-        collection.totalCommitContribution ?? 0;
+        collection.totalCommitContributions ?? 0;
 
     const days : ContributionDay[] = 
         collection.contributionCalendar.weeks.flatMap(
@@ -74,7 +74,7 @@ export async function getGitHubState(username: string) {
         username,
         currentStreak: calculateCurrentStreak(days),
         totalCommits,
-        longestStreak: calculateCurrentStreak(days),
+        longestStreak: calculateLongestStreak(days),
     };
 }
     function calculateCurrentStreak(days: ContributionDay[]) {
