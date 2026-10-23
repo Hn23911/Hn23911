@@ -104,12 +104,13 @@ export async function GET(request: NextRequest) {
                 rx="10"
                 fill="#10264d"
                 fill-opacity="0.88"
+            />
 
             <text 
                 x="25" 
                 y="270" 
                 fill="white" 
-                font-size="12">
+                font-size="12"
                 font-family="Arial, sans-serif">
                 User: ${safeUsername}
             </text>
@@ -118,7 +119,7 @@ export async function GET(request: NextRequest) {
                 x="25"
                 y="291"
                 fill="white"
-                font-size="12">
+                font-size="12"
                 font-family="Arial, sans-serif">
                 Total Commits: ${stats.totalCommits}
             </text>
@@ -136,7 +137,7 @@ export async function GET(request: NextRequest) {
     
     return new Response(svg, {
         headers: {
-            "Content-Type": "image/svg+xml, charset = utf-8",
+            "Content-Type": "image/svg+xml; charset = utf-8",
             "Cache-Control": 
                 "no-cache, no-store, must-revalidate",
         },

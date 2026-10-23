@@ -64,7 +64,7 @@ export async function getGitHubState(username: string) {
     const totalCommits = 
         collection.totalCommitContribution ?? 0;
 
-    const days = ContributionDay[] = 
+    const days : ContributionDay[] = 
         collection.contributionCalendar.weeks.flatMap(
             (week: {contributionDays: ContributionDay[] }) =>
                 week.contributionDays
