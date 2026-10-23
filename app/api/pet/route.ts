@@ -5,8 +5,15 @@ import { ASSETS } from "@/lib/assets";
 
 export async function GET(request: NextRequest) {
     const {searchParams} = new URL(request.url);
-    const username = searchParams.get("username") || searchParams.get("user") || "Hn23911";
-    let stats = {currentStreak: 0, username: username, totalCommits: 0, longestStreak: 0};
+    const username = 
+        searchParams.get("username") || 
+        searchParams.get("user") || "Hn23911";
+    let stats = {
+        currentStreak: 0, 
+        username: username, 
+        totalCommits: 0, 
+        longestStreak: 0,
+    };
     try {
         const fetchedStats: any = await getGitHubState(username);
         if (fetchedStats) {
@@ -22,6 +29,11 @@ export async function GET(request: NextRequest) {
     }
 
     const pet = getPetState(stats.currentStreak);
+
+    const safeUsername = stats.username
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;");
 
     const svg = `
         <svg
@@ -41,82 +53,82 @@ export async function GET(request: NextRequest) {
                     <stop offset="100%" stop-color="#2a5298"/>
                 </linearGradient>
             </defs>
+
             <rect 
-                width="100%"
-                height="100%"
+                width="330"
+                height="330"
+                rx="14"
                 fill="url(#bgGradient)" 
             />
 
+            <text x="165" y="30"
+                text-anchor="middle"
+                fill="white"
+                font-size="21"
+                font-weight="bold"
+                font-family="Arial, sans-serif">
+                Commit Streak
+            </text>
+
+            <text x="165" y="67"
+                text-anchor="middle"
+                fill="#ffe66d"
+                font-size="30"
+                font-weight="bold"
+                font-family="Arial, sans-serif">
+                ${stats.currentStreak}
+                <tspan font-size="15"> days</tspan>
+            </text>
+
             <image
                 href="${pet.asset}"
-                x="30"
-                y="90"
-                width="250"
-                height="250"
+                x="45"
+                y="85"
+                width="240"
+                height="220"
+                preserveAspectRatio="xMidYMid meet"
             />
 
             <image 
                 href="${ASSETS.fish}"
-                x="33"
-                y="20"
-                width="250"
-                height="110"
+                x="225"
+                y="75"
+                width="80"
+                height="55"
+                preserveAspectRatio="xMidYMid meet"
             />
 
-            <text
-                x="170"
-                y="50"
-                text-anchor="middle"
-                fill="black"
-                font-size="20"
-                font-weight="bold"
-                font-family="Arial, sans-serif"
-            >
-                ${stats.currentStreak > 10
-                    ? `<animate attributeName="fill"
-                        values="white;yellow;white" 
-                        dur="1s" 
-                        repeatCount="indefinite" />`
-                    : ""}
-                Commit Streak
-            </text>
+            <rect x="12" y="250"
+                width="306"
+                height="70"
+                rx="10"
+                fill="#10264d"
+                fill-opacity="0.88"
 
-            <text
-                x="90"
-                y="105"
-                fill="black"
-                font-family="Arial, sans-serif"
-            >
-                <tspan font-size="32" font-weight="bold">
-                    ${stats.currentStreak}
-                </tspan>
-
-                <tspan font-size="16" font-weight="bold">
-                    Days
-                </tspan>
+            <text 
+                x="25" 
+                y="270" 
+                fill="white" 
+                font-size="12">
+                font-family="Arial, sans-serif">
+                User: ${safeUsername}
             </text>
 
             <text 
-                x="70" 
-                y="180" 
-                fill="black" 
-                font-size="14">
-                    User: ${stats.username}
+                x="25"
+                y="291"
+                fill="white"
+                font-size="12">
+                font-family="Arial, sans-serif">
+                Total Commits: ${stats.totalCommits}
             </text>
 
             <text 
-                x="70"
-                y="200"
-                fill="black"
-                font-size="14">
-                    Total Commits: ${stats.totalCommits}
-            </text>
-
-            <text 
-                x="70"
-                y="220"
-                fill="black"
-                font-size="14">
+                x="25"
+                y="312"
+                fill="white"
+                font-size="12"
+                font-family="Arial, sans-serif">
                     Longest streak: ${stats.longestStreak} days
             </text>
         </svg>
@@ -124,8 +136,9 @@ export async function GET(request: NextRequest) {
     
     return new Response(svg, {
         headers: {
-            "Content-Type": "image/svg+xml",
-            "Cache-Control": "max-age=0, s-maxage=3600, stale-while-revalidate",
+            "Content-Type": "image/svg+xml, charset = utf-8",
+            "Cache-Control": 
+                "no-cache, no-store, must-revalidate",
         },
     });
 }
