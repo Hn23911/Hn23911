@@ -7,9 +7,7 @@ function toBase64(filePath: string) {
 }
 
 export const ASSETS = {
-    sleepingCat: toBase64(path.join(process.cwd(), "public/assets/1.png")),
-    awakeCat: toBase64(path.join(process.cwd(), "public/assets/2.png")),
-    superCat: toBase64(path.join(process.cwd(), "public/assets/3.webp")),
-    fish: toBase64(path.join(process.cwd(), "public/assets/4.webp")),
+    sleepingCat: toBase64(path.join(process.cwd(), "public/assets/sleeping_cat.png")),
+    awakeCat: toBase64(path.join(process.cwd(), "public/assets/awake_cat.png")),
+    fish: toBase64(path.join(process.cwd(), "public/assets/fish.png")),
 };
-
