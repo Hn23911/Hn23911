@@ -42,95 +42,64 @@ export async function GET(request: NextRequest) {
             xmlns="http://www.w3.org/2000/svg"
         >
             <defs>
-                <linearGradient 
-                    id="bgGradient"
-                    x1="0"
-                    y1="0"
-                    x2="1" 
-                    y2="1"
-                >
-                    <stop offset="0%" stop-color="#1e3c72"/>
-                    <stop offset="100%" stop-color="#2a5298"/>
+                <linearGradient id="bgGradient" x1="0" y1="0" x2="1" y2="1">
+                    <stop offset="0%" stop-color="#fff5fa"/>
+                    <stop offset="100%" stop-color="#f7b4d1"/>
+                </linearGradient>
+                <linearGradient id="panelGradient" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stop-color="#a74675"/>
+                    <stop offset="100%" stop-color="#81385f"/>
                 </linearGradient>
             </defs>
 
-            <rect 
-                width="330"
-                height="330"
-                rx="14"
-                fill="url(#bgGradient)" 
-            />
+            <rect width="330" height="330" rx="14" fill="url(#bgGradient)"/>
+            <circle cx="28" cy="92" r="3" fill="#fff" fill-opacity=".7"/>
+            <circle cx="303" cy="115" r="4" fill="#fff" fill-opacity=".75"/>
+            <path d="M35 145 l3 7 7 3-7 3-3 7-3-7-7-3 7-3z M294 172 l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"
+                fill="#fff" fill-opacity=".78"/>
 
-            <text x="165" y="30"
+            <text x="165" y="31"
                 text-anchor="middle"
-                fill="white"
-                font-size="21"
+                fill="#71334f"
+                font-size="20"
                 font-weight="bold"
                 font-family="Arial, sans-serif">
                 Commit Streak
             </text>
 
-            <text x="165" y="67"
+            <text x="165" y="66"
                 text-anchor="middle"
-                fill="#ffe66d"
-                font-size="30"
+                fill="#a43f70"
+                font-size="29"
                 font-weight="bold"
                 font-family="Arial, sans-serif">
                 ${stats.currentStreak}
                 <tspan font-size="15"> days</tspan>
             </text>
 
-            <image
-                href="${pet.asset}"
-                x="45"
-                y="85"
-                width="240"
-                height="220"
-                preserveAspectRatio="xMidYMid meet"
-            />
-
             <image 
                 href="${ASSETS.fish}"
-                x="225"
+                x="143"
                 y="75"
-                width="80"
-                height="55"
+                width="44"
+                height="22"
                 preserveAspectRatio="xMidYMid meet"
             />
 
-            <rect x="12" y="250"
-                width="306"
-                height="70"
-                rx="10"
-                fill="#10264d"
-                fill-opacity="0.88"
-            />
+            ${pet.cat}
 
-            <text 
-                x="25" 
-                y="270" 
-                fill="white" 
-                font-size="12"
-                font-family="Arial, sans-serif">
+            <rect x="12" y="253" width="306" height="67" rx="12" fill="url(#panelGradient)"/>
+
+            <text x="25" y="274" fill="white" font-size="12" font-family="Arial, sans-serif">
                 User: ${safeUsername}
             </text>
 
-            <text 
-                x="25"
-                y="291"
-                fill="white"
-                font-size="12"
-                font-family="Arial, sans-serif">
+            <text x="25" y="294" fill="white" font-size="12" font-family="Arial, sans-serif">
                 Total Commits: ${stats.totalCommits}
             </text>
 
-            <text 
-                x="25"
-                y="312"
-                fill="white"
-                font-size="12"
-                font-family="Arial, sans-serif">
-                    Longest streak: ${stats.longestStreak} days
+            <text x="25" y="314" fill="white" font-size="12" font-family="Arial, sans-serif">
+                Longest streak: ${stats.longestStreak} days
             </text>
         </svg>
     `;
