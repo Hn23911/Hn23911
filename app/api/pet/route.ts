@@ -1,7 +1,6 @@
 import { NextRequest } from "next/server";
 import { getGitHubState } from "@/lib/github";
 import { getPetState } from "@/lib/pet";
-import { ASSETS } from "@/lib/assets";
 
 export async function GET(request: NextRequest) {
     const {searchParams} = new URL(request.url);
@@ -38,7 +37,7 @@ export async function GET(request: NextRequest) {
     const svg = `
         <svg
             width="330"
-            height="330"
+            height="360"
             xmlns="http://www.w3.org/2000/svg"
         >
             <defs>
@@ -50,55 +49,55 @@ export async function GET(request: NextRequest) {
                     <stop offset="0%" stop-color="#a74675"/>
                     <stop offset="100%" stop-color="#81385f"/>
                 </linearGradient>
+                <filter id="pinkCat" color-interpolation-filters="sRGB">
+                    <feColorMatrix
+                        type="matrix"
+                        values="0.949 0 0 0 0 0 0.716 0 0 0 0 0 1.542 0 0 0 0 0 1 0"
+                    />
+                </filter>
             </defs>
 
-            <rect width="330" height="330" rx="14" fill="url(#bgGradient)"/>
-            <circle cx="28" cy="92" r="3" fill="#fff" fill-opacity=".7"/>
-            <circle cx="303" cy="115" r="4" fill="#fff" fill-opacity=".75"/>
-            <path d="M35 145 l3 7 7 3-7 3-3 7-3-7-7-3 7-3z M294 172 l2 5 5 2-5 2-2 5-2-5-5-2 5-2z"
-                fill="#fff" fill-opacity=".78"/>
+            <rect width="330" height="360" rx="14" fill="url(#bgGradient)"/>
+            <path d="M49 72 C49 39 82 18 126 18
+                C168 18 207 37 235 57 L265 32
+                Q272 27 272 38 L272 105
+                Q272 115 265 109 L235 86
+                C207 106 168 126 126 126
+                C82 126 49 105 49 72Z"
+                fill="#111116"/>
 
-            <text x="165" y="31"
+            <text x="145" y="58"
                 text-anchor="middle"
-                fill="#71334f"
-                font-size="20"
+                fill="white"
+                font-size="18"
                 font-weight="bold"
                 font-family="Arial, sans-serif">
                 Commit Streak
             </text>
 
-            <text x="165" y="66"
+            <text x="145" y="94"
                 text-anchor="middle"
-                fill="#a43f70"
+                fill="white"
                 font-size="29"
                 font-weight="bold"
                 font-family="Arial, sans-serif">
                 ${stats.currentStreak}
-                <tspan font-size="15"> days</tspan>
+                <tspan font-size="15"> Days</tspan>
             </text>
-
-            <image 
-                href="${ASSETS.fish}"
-                x="143"
-                y="75"
-                width="44"
-                height="22"
-                preserveAspectRatio="xMidYMid meet"
-            />
 
             ${pet.cat}
 
-            <rect x="12" y="253" width="306" height="67" rx="12" fill="url(#panelGradient)"/>
+            <rect x="12" y="290" width="306" height="62" rx="12" fill="url(#panelGradient)"/>
 
-            <text x="25" y="274" fill="white" font-size="12" font-family="Arial, sans-serif">
+            <text x="25" y="309" fill="white" font-size="12" font-family="Arial, sans-serif">
                 User: ${safeUsername}
             </text>
 
-            <text x="25" y="294" fill="white" font-size="12" font-family="Arial, sans-serif">
+            <text x="25" y="329" fill="white" font-size="12" font-family="Arial, sans-serif">
                 Total Commits: ${stats.totalCommits}
             </text>
 
-            <text x="25" y="314" fill="white" font-size="12" font-family="Arial, sans-serif">
+            <text x="25" y="349" fill="white" font-size="12" font-family="Arial, sans-serif">
                 Longest streak: ${stats.longestStreak} days
             </text>
         </svg>
